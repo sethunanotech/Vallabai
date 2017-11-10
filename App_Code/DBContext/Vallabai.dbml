@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Learning" Class="VallabaiDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=192.168.1.10;Initial Catalog=Learning;User ID=administrator" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="LearningConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tab_VA_PAYANAM" Member="tab_VA_PAYANAMs">
+    <Type Name="tab_VA_PAYANAM">
+      <Column Name="payanam_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="year" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="payanam_TITLE" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="payanam_STARTDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="payanam_ENDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tab_VA_SWAMY_REGISTRATION" Member="tab_VA_SWAMY_REGISTRATIONs">
+    <Type Name="tab_VA_SWAMY_REGISTRATION">
+      <Column Name="swamy_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="swamy_OLD_REG_NUMBER" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="swamy_CODE" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="swamy_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="swamy_GENDER" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="swamy_FATHER_SPOUSE_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="swamy_DOB" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="swamy_PLACE" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="swamy_ADDRESS" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="swamy_MOBILE_NUMBER" Type="System.String" DbType="NVarChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="swamy_ALTERNATE_MOBILE" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="swamy_DISTRICT" Type="System.String" DbType="NVarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="swamy_BLOOD_GROUP" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="swamy_MALAI_VISIT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="swamy_KANNI_POOJAI_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="swamy_IS_MEMBER" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="swamy_MEMBERSHIP_TYPE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="swamy_MEMBERSHIP_EXPIRY_DATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tab_VA_BUS_BOOKING" Member="tab_VA_BUS_BOOKINGs">
+    <Type Name="tab_VA_BUS_BOOKING">
+      <Column Name="seat_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="payanam_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="user_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="bus_NUMBER" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="seat_NUMBER" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tab_VA_PAYANAM_BUS_DETAILS" Member="tab_VA_PAYANAM_BUS_DETAILs">
+    <Type Name="tab_VA_PAYANAM_BUS_DETAIL">
+      <Column Name="bus_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="bus_PAYANAM_NUMBER" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="vehicle_TYPE" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="bus_NUMBER" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="bus_TOTAL_SEATS" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="bus_REGISTRATION_NUMBER" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="bus_DRIVER_NAME" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="bus_DRIVER_MOBILE_NUMBER" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

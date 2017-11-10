@@ -1,0 +1,238 @@
+﻿body {
+    background:transparent !important;
+}
+ html
+{   
+    background: url(../images/bg1.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow-x:hidden;
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+  
+
+.authenty {  
+    background-color:transparent;
+    height:100%;      
+}
+.authenty [data-animation] {
+  opacity: 0;
+}
+.authenty a:hover {
+  text-decoration: none;
+}
+.authenty .btn {
+  border-radius: 0;
+  font-size:14px;
+}
+.authenty .btn:active {
+  box-shadow: none;
+  border-radius: 0px!important;
+}
+.authenty .btn:focus {
+  outline: thin dotted #FFFFFF;
+  outline-offset: 0;
+}
+.authenty .btn:hover,
+.authenty .btn:focus {
+  color: #fff;  
+}
+
+
+
+@media (max-width: 991px) {
+  .authenty.signin-main .wrap {  
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+.authenty.signin-main .form-wrap {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 450px;
+}
+
+.authenty.signin-main .headerINDemo {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 880px;
+}
+
+.authenty.signin-main .form-header { 
+  padding: 0;
+  padding-left:32px;
+  color:#B6B6B6;
+  /*border-bottom:1px solid #f1f2f2;*/
+}
+.authenty.signin-main .form-mainLogin { 
+  padding: 10px 20px 20px 20px; 
+  box-shadow: 0px 3px 3px 2px #dcdcdc;
+}
+.authenty.signin-main .wrap { 
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media screen and (min-width: 320px) and (max-width: 479px)  {
+  
+  .authenty.signin-main .wrap {		
+	    position: fixed;
+        top: 50%;
+        left: 50%;       
+        transform: translate(-50%, -50%);
+    }
+}
+@media screen and (min-width: 479px) and (max-width: 639px)  {
+  
+  .authenty.signin-main .wrap {		
+	position: fixed;
+    top: 50%;
+    left: 50%;          
+    transform: translate(-50%, -50%);
+    }
+}
+@media screen and (min-width: 639px) and (max-width: 767px)  {
+  
+  .authenty.signin-main .wrap {    
+    position: fixed;
+    top: 50%;
+    left: 50%;    
+    transform: translate(-50%, -50%);
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 768px)  {
+  
+  .authenty.signin-main .wrap {		
+    position: fixed;
+    top: 50%;
+    left: 50%;    
+    transform: translate(-50%, -50%);
+  }
+}
+@media screen and (min-width: 1023px) and (max-width: 1024px)  { 
+    .authenty.signin-main .wrap {    
+      position: fixed;
+      top: 50%;
+      left: 50%;      
+      transform: translate(-50%, -50%);
+	}
+}
+@media screen and (min-width: 1263px) and (max-width: 1282px)  {  
+  .authenty.signin-main .wrap {	
+    position: fixed;
+    top: 50%;
+    left: 50%;  
+    transform: translate(-50%, -50%);
+  }
+}
+@media screen and (min-width: 1282px) and (max-width: 1688px)  { 
+.authenty.signin-main .wrap {  
+   position: fixed;
+  top: 50%;
+  left: 50%;  
+  transform: translate(-50%, -50%);
+	}
+}
+
+.authenty.signin-main .wrapHome {  
+  position: fixed;
+  top: 50%;
+  left: 50%;  
+  transform: translate(-50%, -50%);
+}
+
+@media screen and (min-width: 320px) and (max-width: 479px)  {
+  
+  .authenty.signin-main .wrapHome {		
+	position: fixed;
+    top: 50%;
+    left: 50%;       
+    transform: translate(-50%, -50%);
+  }
+}
+@media screen and (min-width: 479px) and (max-width: 639px)  {
+  
+  .authenty.signin-main .wrapHome {	
+	position: fixed;
+    top: 50%;
+    left: 50%;        
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media screen and (min-width: 639px) and (max-width: 991px)  {
+  
+  .authenty.signin-main .wrapHome {		
+		position: fixed;
+        top: 50%;
+        left: 50%;        
+        transform: translate(-50%, -50%);
+    }
+}
+@media screen and (min-width: 992px) and (max-width: 1022px)  {
+  
+  .authenty.signin-main .wrapHome {		
+		position: fixed;
+        top: 50%;
+        left: 50%;        
+        transform: translate(-50%, -50%);
+  }
+}
+@media screen and (min-width: 1023px) and (max-width: 1024px)  { 
+.authenty.signin-main .wrapHome {
+  /*padding-top: 16%;*/
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        /* bring your own prefixes */
+        transform: translate(-50%, -50%);
+	}
+}
+@media screen and (min-width: 1263px) and (max-width: 1282px)  {  
+  .authenty.signin-main .wrapHome {
+		/*padding-top: 15%;*/
+		position: fixed;
+        top: 50%;
+        left: 50%;
+        /* bring your own prefixes */
+        transform: translate(-50%, -50%);
+  }
+}
+@media screen and (min-width: 1282px) and (max-width: 1688px)  { 
+.authenty.signin-main .wrapHome {
+  /*padding-top: 12.5%;*/
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        /* bring your own prefixes */
+        transform: translate(-50%, -50%);
+	}
+}
+
+
+.authenty.signin-main .signin {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #92d400;
+  color: #000000;
+ 
+}
+.authenty.signin-main input[type="text"],
+.authenty.signin-main input[type="password"] 
+{
+    background-color:White !important;
+    border:1px solid #dcdcdc;
+    color:#B6B6B6;
+}
+.authenty.signin-main .bounceIn {
+  opacity: 1;
+}
+

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.25, 8.5" name="Vallabai">
+  <DataContextMoniker Name="/VallabaiDataContext" />
+  <nestedChildShapes>
+    <classShape Id="c1fb1cce-9497-4b6b-a9de-5ce8b8d2ce7e" absoluteBounds="5, 3.125, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/VallabaiDataContext/tab_VA_PAYANAM" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9af57fdf-5d25-440c-aeeb-9ba66240a1a3" absoluteBounds="5.015, 3.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dfacf7a5-aa81-4193-aaf1-832259467a5b" absoluteBounds="8.25, 3.375, 2.75, 4.2708154296875">
+      <DataClassMoniker Name="/VallabaiDataContext/tab_VA_SWAMY_REGISTRATION" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c7a32e5c-d907-432d-9115-5429eaf6c254" absoluteBounds="8.265, 3.835, 2.7199999999999998, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="41c23478-8c7b-4756-b81a-edf4b1b7ea7b" absoluteBounds="6.125, 1.25, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/VallabaiDataContext/tab_VA_BUS_BOOKING" />
+      <nestedChildShapes>
+        <elementListCompartment Id="134c50df-3a11-4ccc-bb6e-adddd04623d0" absoluteBounds="6.14, 1.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="17be21f0-d604-4a41-87e9-d0d36234ef57" absoluteBounds="5.375, 5.375, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/VallabaiDataContext/tab_VA_PAYANAM_BUS_DETAIL" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b281675b-b15d-486b-911f-25e9ace44413" absoluteBounds="5.39, 5.835, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

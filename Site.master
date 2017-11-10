@@ -1,0 +1,153 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+    <meta name="author" content="">
+    <title>.::Vallabai::.</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/icon1.jpg">
+
+    <link href="management/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="management/assets/css/core.css" rel="stylesheet" type="text/css" />
+    <link href="management/assets/css/components.css" rel="stylesheet" type="text/css" />
+    <link href="management/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="management/assets/css/pages.css" rel="stylesheet" type="text/css" />
+    <link href="management/assets/css/menu.css" rel="stylesheet" type="text/css" />
+    <link href="management/assets/css/responsive.css" rel="stylesheet" type="text/css" />
+    <link href="management/assets/js/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <link href="management/assets/js/bootstrap-datepicker/css/daterangepicker.css" rel="stylesheet">
+
+    <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true"></asp:ScriptManager>
+        <!-- Navigation Bar-->
+        <header id="topnav">
+            <div class="topbar-main">
+                <div class="container">
+                    <!-- Logo container-->
+                    <div class="logo">
+                        <h3>Sree Vallabai Ayyappan</h3>
+                        <a href="#" class="logo">
+                            <%--<img src='<%=Page.ResolveUrl("~/assets/images/inner_Logo.png") %>' alt="" class="img-responsive" />--%>
+                        </a>
+                    </div>
+                    <!-- End Logo container-->
+                    <div class="menu-extras">
+                        <ul class="nav navbar-nav navbar-right pull-right">
+                            <li class="dropdown">
+                                <a>Welcome&nbsp;&nbsp;<% Response.Write(Convert.ToString(Session["LoginName"])); %></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle waves-effect waves-light profile" data-toggle="dropdown" aria-expanded="true">
+                                    <asp:Image ID="imgProfile" runat="server" CssClass="img-circle" ImageUrl='<%=Page.ResolveUrl("~/management//Resources/User/NoImage.jpg") %>' />
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#"><i class="ti-key m-r-5"></i>Change Password</a></li>
+                                    <li><a href='<%=Page.ResolveUrl("~/management//Modules/Common/Logout.aspx") %>'><i class="ti-power-off m-r-5"></i>Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="menu-item">
+                            <!-- Mobile menu toggle-->
+                            <a class="navbar-toggle">
+                                <div class="lines">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </a>
+                            <!-- End mobile menu toggle-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End topbar -->
+            <!-- Navbar Start -->
+            <div class="navbar-custom">
+                <div class="container">
+                    <div id="navigation">
+                        <!-- Navigation Menu-->
+                        <ul class="navigation-menu">
+                            <li class="has-submenu">
+                                <a href="#"><i class="glyphicon glyphicon-stats"></i>Management</a>
+                                <ul class="submenu">
+                                    <li><a href='<%=Page.ResolveUrl("~/management/Modules/modules/regis.aspx") %>'>Swamy List</a></li>
+                                    <li><a href='<%=Page.ResolveUrl("~/management/Modules/modules/payanam.aspx")%>'>Bus Booking</a></li>
+                                    <li><a href='<%=Page.ResolveUrl("~/management/Modules/modules/donation.aspx")%>'>Donations</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu">&nbsp;</li>
+                        </ul>
+                        <!-- End navigation menu -->
+                    </div>
+                    <!-- end #navigation -->
+                </div>
+                <!-- end container -->
+            </div>
+            <!-- end navbar-custom -->
+        </header>
+        <!-- End Navigation Bar-->
+
+        <div class="wrapper">
+            <div class="container">
+                <!-- Page-Title -->
+
+                <asp:ContentPlaceHolder ID="cph" runat="server"></asp:ContentPlaceHolder>
+
+                <!-- Page-Title -->
+                <!-- Footer -->
+                <footer class="footer text-right">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                2016 © 
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End Footer -->
+
+            </div>
+            <!-- end container -->
+        </div>
+        <!-- End wrapper -->
+        
+    </form>
+        
+</body>
+        
+        <!-- jQuery  -->
+        <script src="<%=Page.ResolveUrl("~/management/assets/js/modernizr.min.js") %>"></script>
+        <script src="<%=Page.ResolveUrl("~/management/assets/js/jquery.min.js") %>"></script>
+        <script src="<%=Page.ResolveUrl("~/management/assets/js/bootstrap.min.js") %>"></script>
+        <script src="<%=Page.ResolveUrl("~/management/assets/datatables/jquery.dataTables.min.js") %>"></script>
+        <script src="<%=Page.ResolveUrl("~/management/assets/datatables/dataTables.bootstrap.js") %>"></script>
+        <script src="<%=Page.ResolveUrl("~/management/assets/js/Validation/Validation.js") %>"></script>
+        <!-- Custom main Js -->
+        <script src="<%=Page.ResolveUrl("~/management/assets/js/jquery.core.js") %>"></script>
+        <script src="<%=Page.ResolveUrl("~/management/assets/js/jquery.app.js") %>"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.ajax({
+                type: 'GET',
+                url: 'process.aspx?pid=REBD',
+                success: function (data) {
+                    $('#recentbirthdays').append(data);
+                }
+            });
+        });
+    </script>
+</html>
