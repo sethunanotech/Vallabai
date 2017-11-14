@@ -35,7 +35,7 @@ public partial class Modules_modules_ticketbooking : System.Web.UI.Page
         if (!IsPostBack)
         {
             GetBusNumbers();
-            LoadSeatNumbers();
+            //LoadSeatNumbers();
             BindBookedSeats();
         }
     }
@@ -46,7 +46,7 @@ public partial class Modules_modules_ticketbooking : System.Web.UI.Page
         using (VallabaiDataContext db = new VallabaiDataContext())
         {
             var user = from u in db.tab_VA_SWAMY_REGISTRATIONs
-                       where u.swamy_CODE == SearchCode
+                       where (u.swamy_CODE == SearchCode || u.swamy_NAME.Contains(SearchCode))
                        select new { u.swamy_NAME, u.swamy_ID, u.swamy_PLACE, u.swamy_FATHER_SPOUSE_NAME };
             if (user.Count() > 0)
             {
@@ -60,39 +60,39 @@ public partial class Modules_modules_ticketbooking : System.Web.UI.Page
         }
     }
 
-    protected   void btnBookNow_Click           (object sender, EventArgs e)
-    {
-        var UserID = Convert.ToInt32(ddlNames.SelectedValue);
-        var BusNumber = Convert.ToInt32(ddlBusNumber.SelectedValue);
-        var SeatNumber = Convert.ToInt32(ddlSeatNumber.SelectedValue);
-        var PayanamID = Convert.ToInt32(Request.QueryString["pid"]);
+    //protected   void btnBookNow_Click           (object sender, EventArgs e)
+    //{
+    //    var UserID = Convert.ToInt32(ddlNames.SelectedValue);
+    //    var BusNumber = Convert.ToInt32(ddlBusNumber.SelectedValue);
+    //    var SeatNumber = Convert.ToInt32(ddlSeatNumber.SelectedValue);
+    //    var PayanamID = Convert.ToInt32(Request.QueryString["pid"]);
 
-        using (VallabaiDataContext db = new VallabaiDataContext())
-        {
-            var check = from c in db.tab_VA_BUS_BOOKINGs
-                        where c.payanam_ID == PayanamID && c.user_ID == UserID
-                        select c;
-            if (check.Count() == 0)
-            {
+    //    using (VallabaiDataContext db = new VallabaiDataContext())
+    //    {
+    //        var check = from c in db.tab_VA_BUS_BOOKINGs
+    //                    where c.payanam_ID == PayanamID && c.user_ID == UserID
+    //                    select c;
+    //        if (check.Count() == 0)
+    //        {
 
-                tab_VA_BUS_BOOKING book = new tab_VA_BUS_BOOKING();
-                book.payanam_ID = PayanamID;
-                book.user_ID = UserID;
-                book.bus_NUMBER = BusNumber;
-                book.seat_NUMBER = SeatNumber;
+    //            tab_VA_BUS_BOOKING book = new tab_VA_BUS_BOOKING();
+    //            book.payanam_ID = PayanamID;
+    //            book.user_ID = UserID;
+    //            book.bus_NUMBER = BusNumber;
+    //            book.seat_NUMBER = SeatNumber;
 
-                db.tab_VA_BUS_BOOKINGs.InsertOnSubmit(book);
-                db.SubmitChanges();
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "ShowStatus", "$(function() { funShowMessage('Seat Booked')});", true);
-                BindBookedSeats();
-            }
-            else
-            {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "ShowStatus", "$(function() { funShowMessage('Seat is already alloted to this Swamy')});", true);
-            }
-        }
+    //            db.tab_VA_BUS_BOOKINGs.InsertOnSubmit(book);
+    //            db.SubmitChanges();
+    //            Page.ClientScript.RegisterStartupScript(this.GetType(), "ShowStatus", "$(function() { funShowMessage('Seat Booked')});", true);
+    //            BindBookedSeats();
+    //        }
+    //        else
+    //        {
+    //            Page.ClientScript.RegisterStartupScript(this.GetType(), "ShowStatus", "$(function() { funShowMessage('Seat is already alloted to this Swamy')});", true);
+    //        }
+    //    }
 
-    }
+    //}
 
     protected   void gvCancel_Click             (object sender, EventArgs e)
     {
@@ -120,7 +120,7 @@ public partial class Modules_modules_ticketbooking : System.Web.UI.Page
                     }
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "ShowStatus", "$(function() { funShowMessage('Cancelled selected seat')});", true);
                     BindBookedSeats();
-                    LoadSeatNumbers();
+                    //LoadSeatNumbers();
                     ClearFields();
                 }
             }
@@ -137,7 +137,7 @@ public partial class Modules_modules_ticketbooking : System.Web.UI.Page
 
     protected   void ddlBusNumber_IndexChanged  (object sender, EventArgs e)
     {
-        LoadSeatNumbers();
+        //LoadSeatNumbers();
     }
 
     private     void GetBusNumbers              ()      
@@ -163,43 +163,43 @@ public partial class Modules_modules_ticketbooking : System.Web.UI.Page
         }
     }
 
-    private     void LoadSeatNumbers            ()      
-    {
-        var BusNumber                 = Convert.ToInt32(ddlBusNumber.SelectedValue);
-        var PayanamID                 = Convert.ToInt32(Request.QueryString["pid"]);
-        ddlSeatNumber.Items.Clear();
-        using (VallabaiDataContext db = new VallabaiDataContext())
-        {
-            var seat = from pd in db.tab_VA_PAYANAM_BUS_DETAILs
-                       where pd.bus_ID == BusNumber
-                       select new { pd.bus_TOTAL_SEATS };
-            var TotalSeats = 0;
-            if (seat.Count() > 0)
-            {
-                foreach (var item in seat)
-                {
-                    TotalSeats = item.bus_TOTAL_SEATS;
-                    break;
-                }
-            }
+    //private     void LoadSeatNumbers            ()      
+    //{
+    //    var BusNumber                 = Convert.ToInt32(ddlBusNumber.SelectedValue);
+    //    var PayanamID                 = Convert.ToInt32(Request.QueryString["pid"]);
+    //    //ddlSeatNumber.Items.Clear();
+    //    using (VallabaiDataContext db = new VallabaiDataContext())
+    //    {
+    //        var seat = from pd in db.tab_VA_PAYANAM_BUS_DETAILs
+    //                   where pd.bus_ID == BusNumber
+    //                   select new { pd.bus_TOTAL_SEATS };
+    //        var TotalSeats = 0;
+    //        if (seat.Count() > 0)
+    //        {
+    //            foreach (var item in seat)
+    //            {
+    //                TotalSeats = item.bus_TOTAL_SEATS;
+    //                break;
+    //            }
+    //        }
             
-            if (TotalSeats> 0)
-            {
-                for (int i = 1; i <= TotalSeats; i++)
-                {
-                    if (!CheckSeatAvaialbility(i, BusNumber, PayanamID))
-                    {
-                        ddlSeatNumber.Items.Add("Seat - " + i.ToString());
-                        ddlSeatNumber.Items[ddlSeatNumber.Items.Count - 1].Value = Convert.ToString(i);
-                    }
-                    else
-                    {
-                        continue;
-                    }
-                }
-            }
-        }
-    }
+    //        if (TotalSeats> 0)
+    //        {
+    //            for (int i = 1; i <= TotalSeats; i++)
+    //            {
+    //                if (!CheckSeatAvaialbility(i, BusNumber, PayanamID))
+    //                {
+    //                    ddlSeatNumber.Items.Add("Seat - " + i.ToString());
+    //                    ddlSeatNumber.Items[ddlSeatNumber.Items.Count - 1].Value = Convert.ToString(i);
+    //                }
+    //                else
+    //                {
+    //                    continue;
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
 
     private     bool CheckSeatAvaialbility      (int SeatNumber, int BusNumber, int PayanamID)
     {
@@ -221,7 +221,7 @@ public partial class Modules_modules_ticketbooking : System.Web.UI.Page
     {
         txtCode.Text = "";
         ddlNames.ClearSelection();
-        LoadSeatNumbers();
+        //LoadSeatNumbers();
     }
 
     private     void BindBookedSeats            ()      

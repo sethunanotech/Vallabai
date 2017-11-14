@@ -1,0 +1,22 @@
+.seat_ul{
+	width:450px;
+	margin:0 auto;
+	padding-bottom:20px;
+}
+
+.seat{
+	    border: 1px solid #8bc34a;
+    width: 30px;
+    list-style: none;
+    height: 30px;
+	display:inline-block;
+	margin-bottom:5px;
+	text-align:center;
+	cursor:pointer;
+	font-family: Arial,sans-serif;
+    font-size: 14px;
+}
+.seat_selected {
+ border: 1px solid #ccc;
+ background:#ccc;
+}

@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="ticketbooking.aspx.cs" Inherits="Modules_modules_ticketbooking" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cph" Runat="Server">
+    <link href="../../assets/css/seat.css" rel="stylesheet" />
 <div class="row">
     <div class="col-sm-10">
         <h4 class="page-title">Bus Booking</h4>
@@ -25,7 +26,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="card-box table-responsive">
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <div class="form-group">
                     <div class="input-group m-t-10">
                         <asp:TextBox ID="txtCode" runat="server" CssClass="form-control col-md-2" TabIndex="1" placeholder="Code" MaxLength="150"></asp:TextBox>
@@ -41,17 +42,17 @@
                 </div>
                 <div class="form-group">
                     <label>Bus Number &nbsp;<span class="errorstring">*</span></label>
-                    <asp:DropDownList runat="server" ID="ddlBusNumber" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlBusNumber_IndexChanged"></asp:DropDownList>
+                    <asp:DropDownList runat="server" ID="ddlBusNumber" CssClass="form-control" AutoPostBack="false" onchange="_LoadSeatLayout()" ></asp:DropDownList>
                 </div>
-                <div class="form-group">
-                    <label>Seat Numbers&nbsp;<span class="errorstring">*</span></label>
-                    <asp:DropDownList runat="server" ID="ddlSeatNumber" CssClass="form-control"></asp:DropDownList>
+                <div>&nbsp;</div>
+                <div class="form-group" id="divSeatLayout">
+                    
                 </div>
-                <div class="form-group">
-                    <asp:Button runat="server" Text="Book Now" ID="btnBookNow" CssClass="btn btn-primary waves-light" OnClick="btnBookNow_Click" />
+                <div class="form-group text-center">
+                    <input type="button" value="Book Now" class="btn btn-primary waves-light" onclick="_BookSeat()" />
                 </div>
             </div>
-            <div class="col-sm-8" style="margin-top:10px;">
+            <div class="col-sm-6" style="margin-top:10px;">
 				<asp:GridView  
 					ID="gvSwamies"
 					runat                       ="server"
@@ -93,11 +94,44 @@
 </div>
     <script src="<%=Page.ResolveUrl("~/management/assets/js/jquery.min.js") %>"></script>
      <script type="text/javascript">
+         var SeatNumber = 0;
          function funShowMessage(sparam) {
              $("#SuccessMsg").text(sparam); $("#dSuccessMsg").show();
              setTimeout(function () {
                  $("#SuccessMsg").text(sparam); $("#dSuccessMsg").hide();
              }, 5000);
+         }
+
+         function _SelectSeat(seatNumber) {
+             SeatNumber = seatNumber;
+         }
+
+         function _LoadSeatLayout()
+         {
+             console.log('sethu');
+             var payanamID = <%=Request.QueryString["pid"] %>;
+             var busID = $("#cph_ddlBusNumber option:selected").val();
+             $.ajax({
+                 type: 'GET',
+                 url: '../common/process.aspx?pid=LS&paID=' + payanamID + '&bID=' + busID,
+                 success: function (data) {
+                     console.log(data);
+                     $('#divSeatLayout').append(data);
+                 }
+             });
+         }
+
+         function _BookSeat() {
+             var payanamID = <%=Request.QueryString["pid"] %>;
+             var busID = $("#cph_ddlBusNumber option:selected").val();
+             var userID = $("#cph_ddlNames option:selected").val();
+             $.ajax({
+                 type: 'GET',
+                 url: '../common/process.aspx?pid=SB&paID=' + payanamID + '&bID=' + busID + '&uID=' + userID + '&sID=' + SeatNumber,
+                 success: function (data) {
+                   console.log('sethu : ' + data);
+                 }
+             });
          }
 
          $(document).ready(function () {

@@ -33,7 +33,7 @@
 						<asp:BoundField DataField="payanam_ENDATE"   HeaderText="End Date"  DataFormatString="{0:dd-MMM-yyyy}"    ItemStyle-HorizontalAlign="Left" HeaderStyle-HorizontalAlign="Center" />
 						<asp:TemplateField HeaderText="Add New" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" ItemStyle-Width="80px">
 							<ItemTemplate>
-								<a href="../../modules/modules/bus.aspx" class="btn btn-warning waves-light btn-xs m-b-5">Add Bus</a>
+								<a href="../../modules/modules/bus.aspx?pid=<%#Eval("payanam_ID") %>" class="btn btn-warning waves-light btn-xs m-b-5">Add Bus</a>
 							</ItemTemplate>
 						</asp:TemplateField>
 						<asp:TemplateField HeaderText="Book For Bus" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" ItemStyle-Width="80px">
@@ -42,6 +42,11 @@
 							</ItemTemplate>
 						</asp:TemplateField> 
 					</Columns>
+                    <EmptyDataTemplate>
+                        <div>
+                            <span>No Records Found</span>
+                        </div>
+                    </EmptyDataTemplate>
 				</asp:GridView>
 			</div>
 		</div>
