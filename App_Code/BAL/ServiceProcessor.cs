@@ -43,4 +43,81 @@ public static class ServiceProcessor
         Response = builder.ToString();
         return Response;
     }
+
+    public static string SeatBooking(int PayanamID, int BusID, int UserID, int SeatNumber)
+    {
+        string Response = string.Empty;
+        using (VallabaiDataContext db=new VallabaiDataContext())
+        {
+            try
+            {
+                var seat = from s in db.tab_VA_BUS_BOOKINGs
+                           where s.payanam_ID == PayanamID && s.bus_NUMBER == BusID && s.seat_NUMBER == SeatNumber
+                           select s;
+                if (seat.Count() == 0)
+                {
+                    tab_VA_BUS_BOOKING booking = new tab_VA_BUS_BOOKING();
+                    booking.payanam_ID = PayanamID;
+                    booking.bus_NUMBER = BusID;
+                    booking.user_ID = UserID;
+                    booking.seat_NUMBER = SeatNumber;
+
+                    db.tab_VA_BUS_BOOKINGs.InsertOnSubmit(booking);
+                    db.SubmitChanges();
+                    Response = "Seat is Alloted";
+                }
+                else
+                {
+                    Response = "Selected Seat is not available";
+                }
+            }
+            catch(Exception ex)
+            {
+                Response = "Some error occured : " + ex.Message;
+            }
+        }
+        return Response;
+    }
+
+    public static string LoadSeats(int PayanamID, int BusID)
+    {
+        string Response         = string.Empty;
+        StringBuilder Builder   = new StringBuilder();
+
+        var VehicleType = "";
+        var TotalSeats  = 0;
+
+        using (VallabaiDataContext db = new VallabaiDataContext())
+        {
+            var busdetails = from bd in db.tab_VA_PAYANAM_BUS_DETAILs
+                             where bd.bus_ID == BusID
+                             select new { bd.bus_TOTAL_SEATS, bd.vehicle_TYPE };
+            if (busdetails.Count() > 0)
+            {
+                foreach (var item in busdetails)
+                {
+                    VehicleType = item.vehicle_TYPE;
+                    TotalSeats  = item.bus_TOTAL_SEATS;
+                    break;
+                }
+            }
+            if (TotalSeats > 0)
+            {
+                Builder.Append(@"<ul class='seat_ul'>");
+                for (int i = 1; i <= 24; i++)
+                {
+                    Builder.Append(@"<li class='seat' id='"+ i +"' onclick='_SelectSeat("+ i +")'>"+ i +"</li>");
+                }
+                Builder.Append(@"</ul>");
+                Builder.Append(@"<ul class='seat_ul'>");
+                for (int i = 25; i <= 55; i++)
+                {
+                    Builder.Append(@"<li class='seat' id='" + i + "' onclick='_SelectSeat(" + i + ")'>" + i + "</li>");
+                }
+                Builder.Append(@"</ul>");
+            }
+        }
+        Response = Builder.ToString();
+        return Response;
+    }
 }
